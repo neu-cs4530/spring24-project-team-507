@@ -3,7 +3,6 @@ import InvalidParametersError from '../lib/InvalidParametersError';
 import Player from '../lib/Player';
 import {
   BoundingBox,
-  ConversationArea as ConversationAreaModel,
   InteractableCommand,
   InteractableCommandReturnType,
   KitchenAreaModel,
@@ -51,11 +50,11 @@ export default class KitchenArea extends InteractableArea {
    * Convert this ConversationArea instance to a simple ConversationAreaModel suitable for
    * transporting over a socket to a client.
    */
-  public toModel(): ConversationAreaModel {
+  public toModel(): KitchenAreaModel {
     return {
       id: this.id,
       occupants: this.occupantsByID,
-      type: 'ConversationArea',
+      type: 'KitchenArea',
     };
   }
 
