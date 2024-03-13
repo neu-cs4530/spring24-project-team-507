@@ -58,6 +58,8 @@ export type ChatMessage = {
   interactableID?: string;
 };
 
+export type KitchenAreaModel = Interactable;
+
 export interface ConversationArea extends Interactable {
   topic?: string;
 };
