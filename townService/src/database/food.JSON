@@ -1,0 +1,110 @@
+[{
+    "_id": {
+    "$oid": "65f1d6133d080aabbcfd9399"
+    },
+    "name": "Coffee",
+    "ingredients": [
+    "Coffee bean"
+    ],
+    "enhancement": "character walking speed x1.5",
+    "timeLimit": 180
+},
+{
+    "_id": {
+    "$oid": "65f1d6f43d080aabbcfd939c"
+    },
+    "name": "Latte",
+    "ingredients": [
+    "Coffee bean",
+    "Milk"
+    ],
+    "enhancement": "character walking speed x2",
+    "timeLimit": 300
+},
+{
+    "_id": {
+    "$oid": "65f1d73d3d080aabbcfd939d"
+    },
+    "name": "Meat skewer",
+    "ingredients": [
+    "Meat"
+    ],
+    "enhancement": "character’s appearance change into a cow",
+    "timeLimit": 180
+},
+{
+    "_id": {
+    "$oid": "65f1e05b3d080aabbcfd939e"
+    },
+    "name": "Omlete",
+    "ingredients": [
+    "Egg"
+    ],
+    "enhancement": "character’s appearance into a chicken",
+    "timeLimit": 180
+},
+{
+    "_id": {
+    "$oid": "65f1e0fe3d080aabbcfd93a0"
+    },
+    "name": "Egg fried rice",
+    "ingredients": [
+    "Egg",
+    "Rice",
+    "Soy sauce"
+    ],
+    "enhancement": "character walking speed x 0.5",
+    "timeLimit": 180
+},
+{
+    "_id": {
+    "$oid": "65f1e1403d080aabbcfd93a1"
+    },
+    "name": "Pudding",
+    "ingredients": [
+    "Egg",
+    "Milk"
+    ],
+    "enhancement": "character starts flying",
+    "timeLimit": 180
+},
+{
+    "_id": {
+    "$oid": "65f1e1643d080aabbcfd93a2"
+    },
+    "name": "Fried rice",
+    "ingredients": [
+    "Rice"
+    ],
+    "enhancement": "character becomes invisible, approaching other characters will not trigger camera and microphone",
+    "timeLimit": 180
+},
+{
+    "_id": {
+    "$oid": "65f1e1d83d080aabbcfd93a4"
+    },
+    "name": "Risotto",
+    "ingredients": [
+    [
+        "Meat",
+        "Tomato"
+    ],
+    [
+        "Mushroom",
+        "Rice"
+    ]
+    ],
+    "enhancement": "The character shrinks",
+    "timeLimit": 180
+},
+{
+    "_id": {
+    "$oid": "65f1e22f3d080aabbcfd93a5"
+    },
+    "name": "Unknown recipe",
+    "ingredients": [
+    "any ingredients unlisted"
+    ],
+    "enhancement": "Dizzy effects around the character, and disable any movement",
+    "timeLimit": 10
+}]

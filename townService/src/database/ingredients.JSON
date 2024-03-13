@@ -1,0 +1,54 @@
+[{
+    "_id": {
+    "$oid": "65f1d5023d080aabbcfd9390"
+    },
+    "name": "Tomato"
+},
+{
+    "_id": {
+    "$oid": "65f1d5353d080aabbcfd9391"
+    },
+    "name": "Egg"
+},
+{
+    "_id": {
+    "$oid": "65f1d5aa3d080aabbcfd9392"
+    },
+    "name": "Mushroom"
+},
+{
+    "_id": {
+    "$oid": "65f1d5c23d080aabbcfd9393"
+    },
+    "name": "Meat"
+},
+{
+    "_id": {
+    "$oid": "65f1d5d33d080aabbcfd9394"
+    },
+    "name": "Milk"
+},
+{
+    "_id": {
+    "$oid": "65f1d5e13d080aabbcfd9395"
+    },
+    "name": "Rice"
+},
+{
+    "_id": {
+    "$oid": "65f1d5ee3d080aabbcfd9396"
+    },
+    "name": "Coffee bean"
+},
+{
+    "_id": {
+    "$oid": "65f1d5fc3d080aabbcfd9397"
+    },
+    "name": "Noodle"
+},
+{
+    "_id": {
+    "$oid": "65f1d6093d080aabbcfd9398"
+    },
+    "name": "Soy sauce"
+}]

@@ -11,6 +11,7 @@ import TownsStore from './lib/TownsStore';
 import { ClientToServerEvents, ServerToClientEvents } from './types/CoveyTownSocket';
 import { TownsController } from './town/TownsController';
 import { logError } from './Utils';
+import { run } from './database/connect';
 
 // Create the server instances
 const app = Express();
@@ -67,11 +68,18 @@ app.use(
 );
 
 // Start the configured server, defaulting to port 8081 if $PORT is not set
-server.listen(process.env.PORT || 8081, () => {
+server.listen(process.env.PORT || 8081, async () => {
   const address = server.address() as AddressInfo;
   // eslint-disable-next-line no-console
   console.log(`Listening on ${address.port}`);
   if (process.env.DEMO_TOWN_ID) {
     TownsStore.getInstance().createTown(process.env.DEMO_TOWN_ID, false);
   }
+
+  try {
+    await run();
+  } catch (err) {
+    console.error('Error connecting to MongoDB:', err);
+  }
 });
+
