@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import foodSchema from './IngredientCombinition';
-import ingredientsSchema from './Ingredient';
+import ingredientsSchema from './Ingredients';
 
 const URI =
   'mongodb+srv://yunkai:w99746@cluster0.td2a16e.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
@@ -13,7 +13,7 @@ const URI =
 //     deprecationErrors: true,
 //     }
 // });
-export async function run() {
+export default async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     // await client.connect();
