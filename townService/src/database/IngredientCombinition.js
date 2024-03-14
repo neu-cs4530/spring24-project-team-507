@@ -6,4 +6,5 @@ const foodSchema = new mongoose.Schema({
   enhancement: String,
   timeLimit: Number,
 });
+
 export default foodSchema;

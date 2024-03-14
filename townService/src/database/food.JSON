@@ -87,9 +87,11 @@
     "ingredients": [
     [
         "Meat",
-        "Tomato"
+        "Tomato",
+        "Rice"
     ],
     [
+        "Meat",
         "Mushroom",
         "Rice"
     ]
