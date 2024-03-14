@@ -32,9 +32,9 @@ export default class KitchenArea extends InteractableArea {
   }
 
   /**
-   * Removes a player from this conversation area.
+   * Removes a player from this kitchen area.
    *
-   * Extends the base behavior of InteractableArea to set the topic of this ConversationArea to undefined and
+   * Extends the base behavior of InteractableArea to set the topic of this KitchenArea to undefined and
    * emit an update to other players in the town when the last player leaves.
    *
    * @param player
@@ -47,7 +47,7 @@ export default class KitchenArea extends InteractableArea {
   }
 
   /**
-   * Convert this ConversationArea instance to a simple ConversationAreaModel suitable for
+   * Convert this KitchenArea instance to a simple KitchenAreaModel suitable for
    * transporting over a socket to a client.
    */
   public toModel(): KitchenAreaModel {
@@ -59,9 +59,9 @@ export default class KitchenArea extends InteractableArea {
   }
 
   /**
-   * Creates a new ConversationArea object that will represent a Conversation Area object in the town map.
-   * @param mapObject An ITiledMapObject that represents a rectangle in which this conversation area exists
-   * @param broadcastEmitter An emitter that can be used by this conversation area to broadcast updates
+   * Creates a new KitchenArea object that will represent a Kitchen Area object in the town map.
+   * @param mapObject An ITiledMapObject that represents a rectangle in which this kitchen area exists
+   * @param broadcastEmitter An emitter that can be used by this kitchen area to broadcast updates
    * @returns
    */
   public static fromMapObject(
