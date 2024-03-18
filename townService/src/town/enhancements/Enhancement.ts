@@ -11,12 +11,20 @@ export default abstract class Enhancement<StateType extends PlayerState> {
 
   /**
    * Creates a new enhancement instance.
-   * @param initialState State to initialize the the player without consuming any food.
-   * @param emitAreaChanged A callback to invoke when the state of the game changes. This is used to notify clients.
+   * @param initialState State to initialize the player with no food consumed.
+   * @param emitAreaChanged A callback to invoke when the state of the player's state changes. This is used to notify clients.
    */
   public constructor(initialState: StateType) {
     this._currentState = initialState;
     this._timeLeft = undefined;
+  }
+
+  public get state(): StateType {
+    return this._currentState;
+  }
+
+  public set state(newState: StateType) {
+    this._currentState = newState;
   }
 
   public get timeLeft(): number | undefined {
