@@ -58,6 +58,13 @@ export type ChatMessage = {
   interactableID?: string;
 };
 
+export type PlayerStatus = 'Speed x0.5' | 'Speed x1.5' | 'Speed x2' | 'Fly' | 'Invisible' | 'Cow' | 'Chicken' | 'Shirnk' | 'Dizzy' | 'Normal';
+/**
+ * Base type for the state of a player
+ */
+export interface PlayerState {
+  status: PlayerStatus;
+} 
 export type KitchenAreaModel = Interactable;
 
 export interface ConversationArea extends Interactable {
