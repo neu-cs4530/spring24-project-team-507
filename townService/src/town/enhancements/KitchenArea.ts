@@ -1,14 +1,14 @@
 import { ITiledMapObject } from '@jonbell/tiled-map-type-guard';
-import InvalidParametersError from '../lib/InvalidParametersError';
-import Player from '../lib/Player';
+import InvalidParametersError from '../../lib/InvalidParametersError';
+import Player from '../../lib/Player';
 import {
   BoundingBox,
   InteractableCommand,
   InteractableCommandReturnType,
   KitchenAreaModel,
   TownEmitter,
-} from '../types/CoveyTownSocket';
-import InteractableArea from './InteractableArea';
+} from '../../types/CoveyTownSocket';
+import InteractableArea from '../InteractableArea';
 
 export default class KitchenArea extends InteractableArea {
   /** The kitchen area is "active" when there are players inside of it */
