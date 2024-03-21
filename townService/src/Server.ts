@@ -11,7 +11,7 @@ import TownsStore from './lib/TownsStore';
 import { ClientToServerEvents, ServerToClientEvents } from './types/CoveyTownSocket';
 import { TownsController } from './town/TownsController';
 import { logError } from './Utils';
-import  run  from './database/connect';
+import run from './database/connect';
 
 // Create the server instances
 const app = Express();
@@ -81,4 +81,5 @@ server.listen(process.env.PORT || 8081, async () => {
   } catch (err) {
     console.error('Error connecting to MongoDB:', err);
   }
-});
+ }
+);
