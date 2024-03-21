@@ -81,5 +81,4 @@ server.listen(process.env.PORT || 8081, async () => {
   } catch (err) {
     console.error('Error connecting to MongoDB:', err);
   }
- }
-);
+});
