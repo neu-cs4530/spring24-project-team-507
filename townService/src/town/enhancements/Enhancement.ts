@@ -19,11 +19,19 @@ export default abstract class Enhancement<StateType extends PlayerState> {
     this._timeLeft = undefined;
   }
 
+  public get state(): StateType {
+    return this._currentState;
+  }
+
+  protected set state(newState: StateType) {
+    this._currentState = newState;
+  }
+
   public get timeLeft(): number | undefined {
     return this._timeLeft;
   }
 
-  protected set timeLeft(second: number | undefined) {
+  protected set timeLeft(second: number) {
     this._timeLeft = second;
   }
 }
