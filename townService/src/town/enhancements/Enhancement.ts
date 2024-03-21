@@ -23,7 +23,7 @@ export default abstract class Enhancement<StateType extends PlayerState> {
     return this._timeLeft;
   }
 
-  protected set timeLeft(second: number) {
+  protected set timeLeft(second: number| undefined) {
     this._timeLeft = second;
   }
 }
