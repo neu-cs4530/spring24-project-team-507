@@ -19,7 +19,7 @@ export default async function run() {
     // await client.connect();
     await mongoose.connect(URI);
     const foodModel = mongoose.model('food', foodSchema);
-    const ingredientsModel = mongoose.model('food', ingredientsSchema);
+    const ingredientsModel = mongoose.model('ingredients', ingredientsSchema);
 
     // Send a ping to confirm a successful connection
     // await client.db("admin").command({ ping: 1 });
