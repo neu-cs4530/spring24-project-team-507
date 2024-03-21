@@ -1,0 +1,6 @@
+import mongoose from 'mongoose';
+const ingredientsSchema = new mongoose.Schema({
+    name: String,
+});
+export default ingredientsSchema;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSW5ncmVkaWVudHMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi9zcmMvZGF0YWJhc2UvSW5ncmVkaWVudHMuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxRQUFRLE1BQU0sVUFBVSxDQUFDO0FBRWhDLE1BQU0saUJBQWlCLEdBQUcsSUFBSSxRQUFRLENBQUMsTUFBTSxDQUFDO0lBQzVDLElBQUksRUFBRSxNQUFNO0NBQ2IsQ0FBQyxDQUFDO0FBRUgsZUFBZSxpQkFBaUIsQ0FBQyJ9
