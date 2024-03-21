@@ -11,7 +11,7 @@ import TownsStore from './lib/TownsStore';
 import { ClientToServerEvents, ServerToClientEvents } from './types/CoveyTownSocket';
 import { TownsController } from './town/TownsController';
 import { logError } from './Utils';
-import { run } from './database/Connect';
+import run from './database/connect';
 
 // Create the server instances
 const app = Express();

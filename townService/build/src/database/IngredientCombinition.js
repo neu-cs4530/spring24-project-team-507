@@ -1,0 +1,9 @@
+import mongoose from 'mongoose';
+const foodSchema = new mongoose.Schema({
+    name: String,
+    ingredients: Array,
+    enhancement: String,
+    timeLimit: Number,
+});
+export default foodSchema;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSW5ncmVkaWVudENvbWJpbml0aW9uLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vc3JjL2RhdGFiYXNlL0luZ3JlZGllbnRDb21iaW5pdGlvbi5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLFFBQVEsTUFBTSxVQUFVLENBQUM7QUFFaEMsTUFBTSxVQUFVLEdBQUcsSUFBSSxRQUFRLENBQUMsTUFBTSxDQUFDO0lBQ3JDLElBQUksRUFBRSxNQUFNO0lBQ1osV0FBVyxFQUFFLEtBQUs7SUFDbEIsV0FBVyxFQUFFLE1BQU07SUFDbkIsU0FBUyxFQUFFLE1BQU07Q0FDbEIsQ0FBQyxDQUFDO0FBRUgsZUFBZSxVQUFVLENBQUMifQ==
