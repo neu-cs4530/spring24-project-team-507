@@ -58,7 +58,7 @@ export type ChatMessage = {
   interactableID?: string;
 };
 
-export type PlayerStatus = 'Speed x0.5' | 'Speed x1.5' | 'Speed x2' | 'Fly' | 'Invisible' | 'Cow' | 'Chicken' | 'Shirnk' | 'Dizzy' | 'Normal';
+export type PlayerStatus = 'Speed x0.5' | 'Speed x1.5' | 'Speed x2' | 'Fly' | 'Invisible' | 'Cow' | 'Chicken' | 'Shrink' | 'Dizzy' | 'Normal';
 /**
  * Base type for the state of a player
  */

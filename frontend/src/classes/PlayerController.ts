@@ -2,8 +2,8 @@ import EventEmitter from 'events';
 import TypedEmitter from 'typed-emitter';
 import { Player as PlayerModel, PlayerLocation, PlayerStatus } from '../types/CoveyTownSocket';
 export const MOVEMENT_SPEED = 175;
-export let lowerCaseState = 'normal';
-export let pic = 'normal';
+export let lowerCaseState = '';
+export let pic = '';
 
 export type PlayerEvents = {
   movement: (newLocation: PlayerLocation) => void;
@@ -31,6 +31,8 @@ export default class PlayerController extends (EventEmitter as new () => TypedEm
     this._userName = userName;
     this._location = location;
     this.state = 'Normal';
+    pic = 'atlas';
+    lowerCaseState = 'misa';
   }
 
   set location(newLocation: PlayerLocation) {

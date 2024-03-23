@@ -166,7 +166,7 @@
 	"image": "atlas.png",
 	"format": "RGBA8888",
 	"size": {"w":196,"h":86},
-	"scale": "1",
+	"scale": "100",
 	"smartupdate": "$TexturePacker:SmartUpdate:153aa30e8e4e7c6fb0cfe9ff6ead8419:0bf85290c274470ae6499145fc94b88b:cbce6b53f0f49e0bf15173c25c41f876$"
 }
 }
