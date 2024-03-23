@@ -13,6 +13,7 @@ import ConversationArea from './interactables/ConversationArea';
 import GameArea from './interactables/GameArea';
 import Transporter from './interactables/Transporter';
 import ViewingArea from './interactables/ViewingArea';
+import KitchenArea from './interactables/KitchenArea';
 
 // Still not sure what the right type is here... "Interactable" doesn't do it
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -25,6 +26,8 @@ function interactableTypeForObjectType(type: string): any {
     return ViewingArea;
   } else if (type === 'GameArea') {
     return GameArea;
+  } else if (type === 'KitchenArea') {
+    return KitchenArea;
   } else {
     throw new Error(`Unknown object type: ${type}`);
   }
