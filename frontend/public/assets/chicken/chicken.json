@@ -1,0 +1,141 @@
+{"frames": {
+
+    "chicken-back-walk.000":
+    {
+        "frame": {"x":16,"y":32,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":0,"y":23,"w":32,"h":41},
+        "sourceSize": {"w":32,"h":64}
+    },
+    "chicken-back-walk.001":
+    {
+        "frame": {"x":32,"y":32,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":0,"y":23,"w":32,"h":41},
+        "sourceSize": {"w":32,"h":64}
+    },
+    "chicken-back-walk.002":
+    {
+        "frame": {"x":48,"y":32,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":0,"y":23,"w":16,"h":16},
+        "sourceSize": {"w":32,"h":64}
+    },
+    "chicken-back":
+    {
+        "frame": {"x":0,"y":32,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":0,"y":23,"w":32,"h":41},
+        "sourceSize": {"w":32,"h":64}
+    },
+    "chicken-front-walk.000":
+    {
+        "frame": {"x":16,"y":0,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":1,"y":21,"w":16,"h":16},
+        "sourceSize": {"w":32,"h":64}
+    },
+    "chicken-front-walk.001":
+    {
+        "frame": {"x":32,"y":0,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":1,"y":21,"w":16,"h":16},
+        "sourceSize": {"w":32,"h":64}
+    },
+    "chicken-front-walk.002":
+    {
+        "frame": {"x":48,"y":0,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":1,"y":21,"w":16,"h":16},
+        "sourceSize": {"w":32,"h":64}
+    },
+    "chicken-front":
+    {
+        "frame": {"x":0,"y":0,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":1,"y":21,"w":16,"h":16},
+        "sourceSize": {"w":32,"h":64}
+    },
+    "chicken-left-walk.000":
+    {
+        "frame": {"x":16,"y":48,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":1,"y":25,"w":32,"h":39},
+        "sourceSize": {"w":32,"h":64}
+    },
+    "chicken-left-walk.001":
+    {
+        "frame": {"x":32,"y":48,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":1,"y":23,"w":32,"h":41},
+        "sourceSize": {"w":32,"h":64}
+    },
+    "chicken-left-walk.002":
+    {
+        "frame": {"x":48,"y":48,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":1,"y":25,"w":32,"h":39},
+        "sourceSize": {"w":32,"h":64}
+    },
+    "chicken-left":
+    {
+        "frame": {"x":0,"y":48,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":1,"y":23,"w":16,"h":16},
+        "sourceSize": {"w":32,"h":64}
+    },
+    "chicken-right-walk.000":
+    {
+        "frame": {"x":16,"y":16,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":1,"y":25,"w":32,"h":39},
+        "sourceSize": {"w":32,"h":64}
+    },
+    "chicken-right-walk.001":
+    {
+        "frame": {"x":32,"y":16,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":1,"y":23,"w":32,"h":41},
+        "sourceSize": {"w":32,"h":64}
+    },
+    "chicken-right-walk.002":
+    {
+        "frame": {"x":48,"y":16,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":1,"y":25,"w":32,"h":39},
+        "sourceSize": {"w":32,"h":64}
+    },
+    "chicken-right":
+    {
+        "frame": {"x":0,"y":16,"w":16,"h":16},
+        "rotated": false,
+        "trimmed": true,
+        "spriteSourceSize": {"x":1,"y":23,"w":32,"h":41},
+        "sourceSize": {"w":32,"h":64}
+    }},
+    "meta": {
+        "app": "http://www.codeandweb.com/texturepacker",
+        "version": "1.0",
+        "image": "chicken.png",
+        "format": "RGBA8888",
+        "size": {"w":196,"h":86},
+        "scale": "1",
+        "smartupdate": "$TexturePacker:SmartUpdate:153aa32e8e4e7c6fb0cfe9ff6ead8419:0bf85290c274470ae6499145fc94b88b:cbce6b53f0f49e0bf15173c25c41f876$"
+    }
+    }
+    
