@@ -1,7 +1,9 @@
 import EventEmitter from 'events';
 import TypedEmitter from 'typed-emitter';
-import { Player as PlayerModel, PlayerLocation } from '../types/CoveyTownSocket';
+import { Player as PlayerModel, PlayerLocation, PlayerStatus } from '../types/CoveyTownSocket';
 export const MOVEMENT_SPEED = 175;
+export let lowerCaseState = 'normal';
+export let pic = 'normal';
 
 export type PlayerEvents = {
   movement: (newLocation: PlayerLocation) => void;
@@ -21,11 +23,14 @@ export default class PlayerController extends (EventEmitter as new () => TypedEm
 
   public gameObjects?: PlayerGameObjects;
 
+  public state: PlayerStatus;
+
   constructor(id: string, userName: string, location: PlayerLocation) {
     super();
     this._id = id;
     this._userName = userName;
     this._location = location;
+    this.state = 'Normal';
   }
 
   set location(newLocation: PlayerLocation) {
@@ -46,18 +51,34 @@ export default class PlayerController extends (EventEmitter as new () => TypedEm
     return this._id;
   }
 
+  get playerState(): PlayerStatus {
+    return this.state;
+  }
+
+  set playerState(newState: PlayerStatus) {
+    this.state = newState;
+  }
+
   toPlayerModel(): PlayerModel {
     return { id: this.id, userName: this.userName, location: this.location };
   }
 
   private _updateGameComponentLocation() {
+    // Check if the player state is changed to an outfit enhancement
+    if (this.state === 'Chicken' || this.state === 'Cow') {
+      lowerCaseState = this.state.toLowerCase();
+      pic = lowerCaseState;
+    } else {
+      lowerCaseState = 'misa';
+      pic = 'atlas';
+    }
     if (this.gameObjects && !this.gameObjects.locationManagedByGameScene) {
       const { sprite, label } = this.gameObjects;
       if (!sprite.anims) return;
       sprite.setX(this.location.x);
       sprite.setY(this.location.y);
       if (this.location.moving) {
-        sprite.anims.play(`misa-${this.location.rotation}-walk`, true);
+        sprite.anims.play(`${lowerCaseState}-${this.location.rotation}-walk`, true);
         switch (this.location.rotation) {
           case 'front':
             sprite.body.setVelocity(0, MOVEMENT_SPEED);
@@ -76,7 +97,7 @@ export default class PlayerController extends (EventEmitter as new () => TypedEm
       } else {
         sprite.body.setVelocity(0, 0);
         sprite.anims.stop();
-        sprite.setTexture('atlas', `misa-${this.location.rotation}`);
+        sprite.setTexture(pic, `${lowerCaseState}-${this.location.rotation}`);
       }
       label.setX(sprite.body.x);
       label.setY(sprite.body.y - 20);

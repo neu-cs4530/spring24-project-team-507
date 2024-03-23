@@ -1,6 +1,10 @@
 import assert from 'assert';
 import Phaser from 'phaser';
-import PlayerController, { MOVEMENT_SPEED } from '../../classes/PlayerController';
+import PlayerController, {
+  MOVEMENT_SPEED,
+  lowerCaseState,
+  pic,
+} from '../../classes/PlayerController';
 import TownController from '../../classes/TownController';
 import { PlayerLocation } from '../../types/CoveyTownSocket';
 import { Callback } from '../VideoCall/VideoFrontend/types';
@@ -129,9 +133,9 @@ export default class TownGameScene extends Phaser.Scene {
     );
     this.load.tilemapTiledJSON('map', this._resourcePathPrefix + '/assets/tilemaps/indoors.json');
     this.load.atlas(
-      'atlas',
-      this._resourcePathPrefix + '/assets/atlas/atlas.png',
-      this._resourcePathPrefix + '/assets/atlas/atlas.json',
+      pic,
+      this._resourcePathPrefix + '/assets/' + pic + '/' + pic + '.png',
+      this._resourcePathPrefix + '/assets/' + pic + '/' + pic + '.json',
     );
   }
 
@@ -214,31 +218,32 @@ export default class TownGameScene extends Phaser.Scene {
       switch (primaryDirection) {
         case 'left':
           body.setVelocityX(-MOVEMENT_SPEED);
-          gameObjects.sprite.anims.play('misa-left-walk', true);
+          gameObjects.sprite.anims.play(lowerCaseState + '-left-walk', true);
           break;
         case 'right':
           body.setVelocityX(MOVEMENT_SPEED);
-          gameObjects.sprite.anims.play('misa-right-walk', true);
+          gameObjects.sprite.anims.play(lowerCaseState + '-right-walk', true);
           break;
         case 'front':
           body.setVelocityY(MOVEMENT_SPEED);
-          gameObjects.sprite.anims.play('misa-front-walk', true);
+          gameObjects.sprite.anims.play(lowerCaseState + '-front-walk', true);
           break;
         case 'back':
           body.setVelocityY(-MOVEMENT_SPEED);
-          gameObjects.sprite.anims.play('misa-back-walk', true);
+          gameObjects.sprite.anims.play(lowerCaseState + '-back-walk', true);
           break;
         default:
           // Not moving
           gameObjects.sprite.anims.stop();
           // If we were moving, pick and idle frame to use
           if (prevVelocity.x < 0) {
-            gameObjects.sprite.setTexture('atlas', 'misa-left');
+            gameObjects.sprite.setTexture(pic, lowerCaseState + '-left');
           } else if (prevVelocity.x > 0) {
-            gameObjects.sprite.setTexture('atlas', 'misa-right');
+            gameObjects.sprite.setTexture(pic, lowerCaseState + '-right');
           } else if (prevVelocity.y < 0) {
-            gameObjects.sprite.setTexture('atlas', 'misa-back');
-          } else if (prevVelocity.y > 0) gameObjects.sprite.setTexture('atlas', 'misa-front');
+            gameObjects.sprite.setTexture(pic, lowerCaseState + '-back');
+          } else if (prevVelocity.y > 0)
+            gameObjects.sprite.setTexture(pic, lowerCaseState + '-front');
           break;
       }
 
@@ -412,7 +417,7 @@ export default class TownGameScene extends Phaser.Scene {
     // has a bit of whitespace, so I'm using setSize & setOffset to control the size of the
     // player's body.
     const sprite = this.physics.add
-      .sprite(spawnPoint.x, spawnPoint.y, 'atlas', 'misa-front')
+      .sprite(spawnPoint.x, spawnPoint.y, pic, lowerCaseState + '-front')
       .setSize(30, 40)
       .setOffset(0, 24)
       .setDepth(6);
@@ -445,9 +450,9 @@ export default class TownGameScene extends Phaser.Scene {
     // animation manager so any sprite can access them.
     const { anims } = this;
     anims.create({
-      key: 'misa-left-walk',
-      frames: anims.generateFrameNames('atlas', {
-        prefix: 'misa-left-walk.',
+      key: `${lowerCaseState}-left-walk`,
+      frames: anims.generateFrameNames(pic, {
+        prefix: `${lowerCaseState}-left-walk.`,
         start: 0,
         end: 3,
         zeroPad: 3,
@@ -456,9 +461,9 @@ export default class TownGameScene extends Phaser.Scene {
       repeat: -1,
     });
     anims.create({
-      key: 'misa-right-walk',
-      frames: anims.generateFrameNames('atlas', {
-        prefix: 'misa-right-walk.',
+      key: `${lowerCaseState}-right-walk`,
+      frames: anims.generateFrameNames(pic, {
+        prefix: `${lowerCaseState}-right-walk.`,
         start: 0,
         end: 3,
         zeroPad: 3,
@@ -467,9 +472,9 @@ export default class TownGameScene extends Phaser.Scene {
       repeat: -1,
     });
     anims.create({
-      key: 'misa-front-walk',
-      frames: anims.generateFrameNames('atlas', {
-        prefix: 'misa-front-walk.',
+      key: `${lowerCaseState}-front-walk`,
+      frames: anims.generateFrameNames(pic, {
+        prefix: `${lowerCaseState}-front-walk.`,
         start: 0,
         end: 3,
         zeroPad: 3,
@@ -478,9 +483,9 @@ export default class TownGameScene extends Phaser.Scene {
       repeat: -1,
     });
     anims.create({
-      key: 'misa-back-walk',
-      frames: anims.generateFrameNames('atlas', {
-        prefix: 'misa-back-walk.',
+      key: `${lowerCaseState}-back-walk`,
+      frames: anims.generateFrameNames(pic, {
+        prefix: `${lowerCaseState}-back-walk.`,
         start: 0,
         end: 3,
         zeroPad: 3,
@@ -518,7 +523,7 @@ export default class TownGameScene extends Phaser.Scene {
   createPlayerSprites(player: PlayerController) {
     if (!player.gameObjects) {
       const sprite = this.physics.add
-        .sprite(player.location.x, player.location.y, 'atlas', 'misa-front')
+        .sprite(player.location.x, player.location.y, pic, 'misa-front')
         .setSize(30, 40)
         .setOffset(0, 24);
       const label = this.add.text(
