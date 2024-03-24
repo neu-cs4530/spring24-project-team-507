@@ -37,7 +37,7 @@
         "frame": {"x":16,"y":0,"w":16,"h":16},
         "rotated": false,
         "trimmed": true,
-        "spriteSourceSize": {"x":1,"y":21,"w":16,"h":16},
+        "spriteSourceSize": {"x":1,"y":23,"w":16,"h":16},
         "sourceSize": {"w":32,"h":64}
     },
     "chicken-front-walk.001":
@@ -45,7 +45,7 @@
         "frame": {"x":32,"y":0,"w":16,"h":16},
         "rotated": false,
         "trimmed": true,
-        "spriteSourceSize": {"x":1,"y":21,"w":16,"h":16},
+        "spriteSourceSize": {"x":1,"y":23,"w":16,"h":16},
         "sourceSize": {"w":32,"h":64}
     },
     "chicken-front-walk.002":
@@ -53,7 +53,7 @@
         "frame": {"x":48,"y":0,"w":16,"h":16},
         "rotated": false,
         "trimmed": true,
-        "spriteSourceSize": {"x":1,"y":21,"w":16,"h":16},
+        "spriteSourceSize": {"x":1,"y":23,"w":16,"h":16},
         "sourceSize": {"w":32,"h":64}
     },
     "chicken-front":
@@ -61,7 +61,7 @@
         "frame": {"x":0,"y":0,"w":16,"h":16},
         "rotated": false,
         "trimmed": true,
-        "spriteSourceSize": {"x":1,"y":21,"w":16,"h":16},
+        "spriteSourceSize": {"x":1,"y":23,"w":16,"h":16},
         "sourceSize": {"w":32,"h":64}
     },
     "chicken-left-walk.000":

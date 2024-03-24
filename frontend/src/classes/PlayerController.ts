@@ -67,7 +67,12 @@ export default class PlayerController extends (EventEmitter as new () => TypedEm
 
   private _updateGameComponentLocation() {
     // Check if the player state is changed to an outfit enhancement
-    if (this.state === 'Chicken' || this.state === 'Cow' || this.state == 'Dog') {
+    if (
+      this.state === 'Chicken' ||
+      this.state === 'Cow' ||
+      this.state == 'Dog' ||
+      this.state == 'Parrot'
+    ) {
       lowerCaseState = this.state.toLowerCase();
       pic = lowerCaseState;
     } else {
