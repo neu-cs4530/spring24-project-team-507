@@ -7,12 +7,20 @@ export default class Stove {
 
   private _finalFood: Food | '_';
 
+  private _foods: Food[];
+
   constructor(grids: string[][], finalFood: string) {
     this._grids = [
       ['_', '_'],
       ['_', '_'],
     ];
     this._finalFood = '_';
+    this._foods = [];
+    this.initializeFoods();
+  }
+
+  async initializeFoods(): Promise<void> {
+    this._foods = await readJsonFile<Food>('food.json');
   }
 
   get grids(): (Ingredient | '_')[][] {
@@ -35,11 +43,13 @@ export default class Stove {
             }
           }
         }
+
+        this.removeIngredient(ingrendient);
       } else {
         throw new Error('The stove is full.');
       }
     } catch (error) {
-      console.log('The stove is full.');
+      // console.log('The stove is full.');
     }
   }
 
@@ -59,15 +69,14 @@ export default class Stove {
         throw new Error('The ingredient is not on the stove.');
       }
     } catch (error) {
-      console.log('The ingredient is not on the stove.');
+      // console.log('The ingredient is not on the stove.');
     }
   }
 
-  // Define functions to match and cook food
-  async cookFood(foodName: string): Promise<void> {
+  // Match the ingredients in the stove to a recipe and cook the food
+  async cookFood(foodName: string, stove: Ingredient[]): Promise<void> {
     // Read food and ingredient data from JSON files
     const foods: Food[] = await readJsonFile<Food>('food.JSON');
-    const ingredients: Ingredient[] = await readJsonFile<Ingredient>('Ingredients.JSON');
 
     // Find the specified food
     const food = foods.find(f => f.name.toLowerCase() === foodName.toLowerCase());
@@ -77,10 +86,10 @@ export default class Stove {
       return;
     }
 
-    // Check if each ingredient required is in the ingredients list
+    // Check if each ingredient required is in the stove
     let allIngredientsAvailable = true;
     for (const ingredientName of food.ingredients.flat()) {
-      if (!ingredients.some(i => i.name.toLowerCase() === ingredientName.toLowerCase())) {
+      if (!stove.some(i => i.name.toLowerCase() === ingredientName.toLowerCase())) {
         console.log(`Missing ingredient: ${ingredientName}`);
         allIngredientsAvailable = false;
         break;
@@ -92,8 +101,14 @@ export default class Stove {
       console.log(
         `Cooked ${foodName}. Enhancement: ${food.enhancement}, Time Limit: ${food.timeLimit} seconds.`,
       );
+      this._finalFood = food;
     } else {
       console.log(`Cannot cook ${foodName} due to missing ingredients.`);
     }
+
+    this._grids = [
+      ['_', '_'],
+      ['_', '_'],
+    ];
   }
 }
