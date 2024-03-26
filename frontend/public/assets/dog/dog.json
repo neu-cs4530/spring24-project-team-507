@@ -37,7 +37,7 @@
         "frame": {"x":30,"y":0,"w":30,"h":30},
         "rotated": false,
         "trimmed": true,
-        "spriteSourceSize": {"x":1,"y":21,"w":30,"h":30},
+        "spriteSourceSize": {"x":1,"y":25,"w":30,"h":30},
         "sourceSize": {"w":30,"h":60}
     },
     "dog-front-walk.001":
@@ -45,7 +45,7 @@
         "frame": {"x":60,"y":0,"w":30,"h":30},
         "rotated": false,
         "trimmed": true,
-        "spriteSourceSize": {"x":1,"y":21,"w":30,"h":30},
+        "spriteSourceSize": {"x":1,"y":25,"w":30,"h":30},
         "sourceSize": {"w":30,"h":60}
     },
     "dog-front-walk.002":
@@ -53,7 +53,7 @@
         "frame": {"x":96,"y":0,"w":30,"h":30},
         "rotated": false,
         "trimmed": true,
-        "spriteSourceSize": {"x":1,"y":21,"w":30,"h":30},
+        "spriteSourceSize": {"x":1,"y":25,"w":30,"h":30},
         "sourceSize": {"w":30,"h":60}
     },
     "dog-front":
@@ -61,7 +61,7 @@
         "frame": {"x":0,"y":0,"w":30,"h":30},
         "rotated": false,
         "trimmed": true,
-        "spriteSourceSize": {"x":1,"y":21,"w":30,"h":30},
+        "spriteSourceSize": {"x":1,"y":25,"w":30,"h":30},
         "sourceSize": {"w":30,"h":60}
     },
     "dog-left-walk.000":
