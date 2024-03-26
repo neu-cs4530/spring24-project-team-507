@@ -2,13 +2,20 @@ import { Food } from './interface/IFood';
 import { Ingredient } from './interface/IIngredient';
 import readJsonFile from './readJSONFile';
 
-// A users inventory of the ingredients they have available to cook with
+// A users inventory of the ingredients they have available to cook with with a maximum of 6 ingredients
 
 export default class Inventory {
-  private _ingredients: Ingredient[];
+  private _ingredients: [Ingredient, Ingredient, Ingredient, Ingredient, Ingredient, Ingredient];
 
   constructor(ingredients: Ingredient[]) {
-    this._ingredients = ingredients;
+    this._ingredients = [
+      ingredients[0],
+      ingredients[1],
+      ingredients[2],
+      ingredients[3],
+      ingredients[4],
+      ingredients[5],
+    ];
   }
 
   /**
