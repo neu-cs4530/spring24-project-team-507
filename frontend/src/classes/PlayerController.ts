@@ -2,8 +2,8 @@ import EventEmitter from 'events';
 import TypedEmitter from 'typed-emitter';
 import { Player as PlayerModel, PlayerLocation, PlayerStatus } from '../types/CoveyTownSocket';
 export const MOVEMENT_SPEED = 175;
-export let lowerCaseState = '';
-export let pic = '';
+export let lowerCaseState = 'misa';
+export let pic = 'atlas';
 
 export type PlayerEvents = {
   movement: (newLocation: PlayerLocation) => void;
@@ -67,19 +67,14 @@ export default class PlayerController extends (EventEmitter as new () => TypedEm
 
   private _updateGameComponentLocation() {
     // Check if the player state is changed to an outfit enhancement
-    if (
-      this.state === 'Chicken' ||
-      this.state === 'Cow' ||
-      this.state == 'Dog' ||
-      this.state == 'Parrot' ||
-      this.state == 'Invisible'
-    ) {
-      lowerCaseState = this.state.toLowerCase();
-      pic = lowerCaseState;
-    } else {
+    if (this.state === 'Normal') {
       lowerCaseState = 'misa';
       pic = 'atlas';
+    } else {
+      lowerCaseState = this.state.toLowerCase();
+      pic = lowerCaseState;
     }
+
     if (this.gameObjects && !this.gameObjects.locationManagedByGameScene) {
       const { sprite, label } = this.gameObjects;
       if (!sprite.anims) return;
