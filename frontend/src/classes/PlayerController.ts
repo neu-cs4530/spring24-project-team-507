@@ -30,9 +30,9 @@ export default class PlayerController extends (EventEmitter as new () => TypedEm
     this._id = id;
     this._userName = userName;
     this._location = location;
-    this.state = 'Normal';
-    pic = 'normal';
-    lowerCaseState = 'normal';
+    this.state = 'Invisible';
+    pic = 'invisible';
+    lowerCaseState = 'invisible';
   }
 
   set location(newLocation: PlayerLocation) {
