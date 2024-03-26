@@ -350,20 +350,29 @@ export default class TownGameScene extends Phaser.Scene {
     const belowLayer = this.map.createLayer('Below Player', tileset, 0, 0);
     assert(belowLayer);
     belowLayer.setDepth(-10);
+    const aboveGroundLayer = this.map.createLayer('Above Ground', tileset, 0, 0);
+    assert(aboveGroundLayer);
     const wallsLayer = this.map.createLayer('Walls', tileset, 0, 0);
     const onTheWallsLayer = this.map.createLayer('On The Walls', tileset, 0, 0);
     assert(wallsLayer);
     assert(onTheWallsLayer);
     wallsLayer.setCollisionByProperty({ collides: true });
     onTheWallsLayer.setCollisionByProperty({ collides: true });
-
+    const layer9 = this.map.createLayer('Tile Layer 9', tileset, 0, 0);
+    assert(layer9);
+    layer9.setCollisionByProperty({ collides: true });
     const worldLayer = this.map.createLayer('World', tileset, 0, 0);
     assert(worldLayer);
     worldLayer.setCollisionByProperty({ collides: true });
+    const layer7 = this.map.createLayer('Tile Layer 7', tileset, 0, 0);
+    const layer8 = this.map.createLayer('Tile Layer 8', tileset, 0, 0);
+    assert(layer7);
+    assert(layer8);
+    layer7.setCollisionByProperty({ collides: true });
+    layer8.setCollisionByProperty({ collides: true });
     const aboveLayer = this.map.createLayer('Above Player', tileset, 0, 0);
     assert(aboveLayer);
     aboveLayer.setCollisionByProperty({ collides: true });
-
     const veryAboveLayer = this.map.createLayer('Very Above Player', tileset, 0, 0);
     assert(veryAboveLayer);
     /* By default, everything gets depth sorted on the screen in the order we created things.
@@ -371,6 +380,8 @@ export default class TownGameScene extends Phaser.Scene {
          it a depth. Higher depths will sit on top of lower depth objects.
          */
     worldLayer.setDepth(5);
+    layer7.setDepth(6);
+    layer8.setDepth(7);
     aboveLayer.setDepth(10);
     veryAboveLayer.setDepth(15);
 
