@@ -1,9 +1,6 @@
-import { Food } from './interface/IFood';
 import { Ingredient } from './interface/IIngredient';
-import readJsonFile from './readJSONFile';
 
 // A users inventory of the ingredients they have available to cook with
-
 export default class Inventory {
   private _ingredients: Ingredient[];
 
