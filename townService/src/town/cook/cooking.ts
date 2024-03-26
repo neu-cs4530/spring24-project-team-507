@@ -41,7 +41,7 @@ export default class Stove {
         throw new Error('The stove is full.');
       }
     } catch (error) {
-      console.log('The stove is full.');
+      // console.log('The stove is full.');
     }
   }
 
@@ -61,43 +61,43 @@ export default class Stove {
         throw new Error('The ingredient is not on the stove.');
       }
     } catch (error) {
-      console.log('The ingredient is not on the stove.');
+      // console.log('The ingredient is not on the stove.');
     }
   }
 
-  // Match the ingredients in the stove to a recipe and cook the food
-  async cookFood(foodName: string, stove: Ingredient[]): Promise<void> {
-    // Read food and ingredient data from JSON files
-    const foods: Food[] = await readJsonFile<Food>('food.JSON');
+  /**
+   * Match the ingredients in the stove to a recipe and cook the food
+   * @param stove - An array of ingredients available in the stove.
+   * @returns A Promise that resolves to void.
+   */
+  async cookFood(stove: Ingredient[]): Promise<void> {
+    const recipe: Food[] = await readJsonFile('Food.JSON');
+    const food: Food | undefined = recipe.find(r => {
+      const recipeIngredientsSet = new Set(r.ingredients.flat());
+      const stoveIngredientsSet = new Set(stove);
+      return JSON.stringify([...recipeIngredientsSet]) === JSON.stringify([...stoveIngredientsSet]);
+    });
 
-    // Find the specified food
-    const food = foods.find(f => f.name.toLowerCase() === foodName.toLowerCase());
-
-    if (!food) {
-      console.log('Unknown recipe.');
-      return;
-    }
-
-    // Check if each ingredient required is in the stove
-    let allIngredientsAvailable = true;
-    for (const ingredientName of food.ingredients.flat()) {
-      if (!stove.some(i => i.name.toLowerCase() === ingredientName.toLowerCase())) {
-        console.log(`Missing ingredient: ${ingredientName}`);
-        allIngredientsAvailable = false;
-        break;
+    // Check if there are duplicated ingredients in the stove
+    let counter = 0;
+    const ingredientCounts = new Map<Ingredient, number>();
+    for (const ingredient of stove) {
+      const count = ingredientCounts.get(ingredient) || 0;
+      ingredientCounts.set(ingredient, count + 1);
+      if (count + 1 > 1) {
+        counter++;
       }
     }
 
-    if (allIngredientsAvailable) {
-      // There are enough raw materials, and the gain effect and time limit of the food are output.
-      console.log(
-        `Cooked ${foodName}. Enhancement: ${food.enhancement}, Time Limit: ${food.timeLimit} seconds.`,
-      );
+    if (food) {
+      // Increase the cooking time accroding to the number of duplicated ingredients
+      food.timeLimit += counter * 30;
       this._finalFood = food;
     } else {
-      console.log(`Cannot cook ${foodName} due to missing ingredients.`);
+      this._finalFood = recipe.find(f => f.name === 'Unknown recipe') || '_';
     }
 
+    // Clear the stove after cooking
     this._grids = [
       ['_', '_'],
       ['_', '_'],
