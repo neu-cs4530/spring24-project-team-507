@@ -1,11 +1,19 @@
 import { Ingredient } from './interface/IIngredient';
 
 // A users inventory of the ingredients they have available to cook with
+
 export default class Inventory {
-  private _ingredients: Ingredient[];
+  private _ingredients: [Ingredient, Ingredient, Ingredient, Ingredient, Ingredient, Ingredient];
 
   constructor(ingredients: Ingredient[]) {
-    this._ingredients = ingredients;
+    this._ingredients = [
+      ingredients[0],
+      ingredients[1],
+      ingredients[2],
+      ingredients[3],
+      ingredients[4],
+      ingredients[5],
+    ];
   }
 
   /**
@@ -20,7 +28,9 @@ export default class Inventory {
    * @param ingredient The ingredient to add
    */
   addIngredient(ingredient: Ingredient): void {
-    this._ingredients.push(ingredient);
+    if (this._ingredients.length < 6) {
+      this._ingredients.push(ingredient);
+    }
   }
 
   /**
