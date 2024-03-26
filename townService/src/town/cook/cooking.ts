@@ -1,13 +1,13 @@
 import { Food } from './interface/IFood';
 import { Ingredient } from './interface/IIngredient';
-import readJsonFile from './readJSONFile';
+import readJsonFile from './ReadJSONFile';
 
 export default class Stove {
   private _grids: (Ingredient | '_')[][];
 
   private _finalFood: Food | '_';
 
-  private _foods: Food[];
+  private _extraTime: number;
 
   constructor(grids: string[][], finalFood: string) {
     this._grids = [
@@ -15,12 +15,7 @@ export default class Stove {
       ['_', '_'],
     ];
     this._finalFood = '_';
-    this._foods = [];
-    this.initializeFoods();
-  }
-
-  async initializeFoods(): Promise<void> {
-    this._foods = await readJsonFile<Food>('food.json');
+    this._extraTime = 0;
   }
 
   get grids(): (Ingredient | '_')[][] {
@@ -31,7 +26,18 @@ export default class Stove {
     return this._finalFood;
   }
 
-  // Add an ingredient to the stove's grid
+  get extraTime(): number {
+    return this._extraTime;
+  }
+
+  set extraTime(time: number) {
+    this._extraTime = time;
+  }
+
+  /**
+   * Adds an ingredient to the stove grid.
+   * @param ingredient - The ingredient to be added.
+   */
   addIngredient(ingrendient: Ingredient): void {
     try {
       if (this._grids.flat().includes('_')) {
@@ -53,7 +59,10 @@ export default class Stove {
     }
   }
 
-  // Remove an ingredient from the stove's grid
+  /**
+   * Removes the specified ingredient from the stove.
+   * @param ingredient - The ingredient to be removed.
+   */
   removeIngredient(ingrendient: Ingredient): void {
     try {
       if (this._grids.flat().includes(ingrendient)) {
@@ -73,39 +82,39 @@ export default class Stove {
     }
   }
 
-  // Match the ingredients in the stove to a recipe and cook the food
-  async cookFood(foodName: string, stove: Ingredient[]): Promise<void> {
-    // Read food and ingredient data from JSON files
-    const foods: Food[] = await readJsonFile<Food>('food.JSON');
+  /**
+   * Cooks food using the provided stove ingredients.
+   * @param stove - An array of ingredients available in the stove.
+   * @returns A Promise that resolves to void.
+   */
+  async cookFood(stove: Ingredient[]): Promise<void> {
+    const recipe: Food[] = await readJsonFile('Food.JSON');
+    const food: Food | undefined = recipe.find(r => {
+      const recipeIngredientsSet = new Set(r.ingredients.flat());
+      const stoveIngredientsSet = new Set(stove);
+      return JSON.stringify([...recipeIngredientsSet]) === JSON.stringify([...stoveIngredientsSet]);
+    });
 
-    // Find the specified food
-    const food = foods.find(f => f.name.toLowerCase() === foodName.toLowerCase());
-
-    if (!food) {
-      console.log('Unknown recipe.');
-      return;
-    }
-
-    // Check if each ingredient required is in the stove
-    let allIngredientsAvailable = true;
-    for (const ingredientName of food.ingredients.flat()) {
-      if (!stove.some(i => i.name.toLowerCase() === ingredientName.toLowerCase())) {
-        console.log(`Missing ingredient: ${ingredientName}`);
-        allIngredientsAvailable = false;
-        break;
+    // Check if there are duplicated ingredients in the stove
+    let counter = 0;
+    const ingredientCounts = new Map<Ingredient, number>();
+    for (const ingredient of stove) {
+      const count = ingredientCounts.get(ingredient) || 0;
+      ingredientCounts.set(ingredient, count + 1);
+      if (count + 1 > 1) {
+        counter++;
       }
     }
 
-    if (allIngredientsAvailable) {
-      // There are enough raw materials, and the gain effect and time limit of the food are output.
-      console.log(
-        `Cooked ${foodName}. Enhancement: ${food.enhancement}, Time Limit: ${food.timeLimit} seconds.`,
-      );
+    if (food) {
+      // Increase the cooking time accroding to the number of duplicated ingredients
+      this._extraTime += counter * 30;
       this._finalFood = food;
     } else {
-      console.log(`Cannot cook ${foodName} due to missing ingredients.`);
+      this._finalFood = recipe.find(f => f.name === 'Unknown recipe') || '_';
     }
 
+    // Clear the stove after cooking
     this._grids = [
       ['_', '_'],
       ['_', '_'],
