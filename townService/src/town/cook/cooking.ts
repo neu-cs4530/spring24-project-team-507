@@ -1,6 +1,6 @@
 import { Food } from './interface/IFood';
 import { Ingredient } from './interface/IIngredient';
-import readJsonFile from './ReadJSONFile';
+import readJsonFile from './readJSONFile';
 
 // Define functions to match and cook food
 async function cookFood(foodName: string): Promise<void> {
