@@ -30,7 +30,9 @@ export default class Inventory {
    * @param ingredient The ingredient to add
    */
   addIngredient(ingredient: Ingredient): void {
-    this._ingredients.push(ingredient);
+    if (this._ingredients.length < 6) {
+      this._ingredients.push(ingredient);
+    }
   }
 
   /**
