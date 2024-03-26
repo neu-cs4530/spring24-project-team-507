@@ -30,9 +30,9 @@ export default class PlayerController extends (EventEmitter as new () => TypedEm
     this._id = id;
     this._userName = userName;
     this._location = location;
-    this.state = 'Normal';
-    pic = 'atlas';
-    lowerCaseState = 'misa';
+    this.state = 'Invisible';
+    pic = 'invisible';
+    lowerCaseState = 'invisible';
   }
 
   set location(newLocation: PlayerLocation) {
@@ -71,7 +71,8 @@ export default class PlayerController extends (EventEmitter as new () => TypedEm
       this.state === 'Chicken' ||
       this.state === 'Cow' ||
       this.state == 'Dog' ||
-      this.state == 'Parrot'
+      this.state == 'Parrot' ||
+      this.state == 'Invisible'
     ) {
       lowerCaseState = this.state.toLowerCase();
       pic = lowerCaseState;
