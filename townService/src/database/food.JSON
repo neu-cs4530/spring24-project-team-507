@@ -85,18 +85,11 @@
     },
     "name": "Risotto",
     "ingredients": [
-    [
         "Meat",
         "Tomato",
         "Rice"
     ],
-    [
-        "Meat",
-        "Mushroom",
-        "Rice"
-    ]
-    ],
-    "enhancement": "The character enlarges",
+    "enhancement": "character's appearance into a dog",
     "timeLimit": 180
 },
 {

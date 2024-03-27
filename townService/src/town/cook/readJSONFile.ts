@@ -1,8 +1,8 @@
-import { readFile } from 'fs/promises';
+import { readFileSync } from 'fs';
 import { join } from 'path';
 
-export default async function readJsonFile<T>(fileName: string): Promise<T[]> {
-  const filePath = join(__dirname, '..', '..', '..', 'database', fileName);
-  const data = await readFile(filePath, 'utf-8');
+export default function readJsonFile<T>(fileName: string): T[] {
+  const filePath = join(__dirname, '..', '..', '..', 'src/database', fileName);
+  const data = readFileSync(filePath, 'utf-8');
   return JSON.parse(data);
 }

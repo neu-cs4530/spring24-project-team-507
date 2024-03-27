@@ -9,7 +9,7 @@ export default class Stove {
 
   private _extraTime: number;
 
-  constructor(grids: string[][], finalFood: string) {
+  constructor() {
     this._grids = [
       ['_', '_'],
       ['_', '_'],
@@ -39,23 +39,18 @@ export default class Stove {
    * @param ingredient - The ingredient to be added.
    */
   addIngredient(ingrendient: Ingredient): void {
-    try {
-      if (this._grids.flat().includes('_')) {
-        for (let i = 0; i < this._grids.length; i++) {
-          for (let j = 0; j < this._grids[i].length; j++) {
-            if (this._grids[i][j] === '_') {
-              this._grids[i][j] = ingrendient;
-              return;
-            }
+    if (this._grids.flat().includes('_')) {
+      for (let i = 0; i < this._grids.length; i++) {
+        for (let j = 0; j < this._grids[i].length; j++) {
+          if (this._grids[i][j] === '_') {
+            this._grids[i][j] = ingrendient;
+            return;
           }
         }
-
-        this.removeIngredient(ingrendient);
-      } else {
-        throw new Error('The stove is full.');
       }
-    } catch (error) {
-      // console.log('The stove is full.');
+      this.removeIngredient(ingrendient);
+    } else {
+      throw new Error('The stove is full.');
     }
   }
 
@@ -64,21 +59,17 @@ export default class Stove {
    * @param ingredient - The ingredient to be removed.
    */
   removeIngredient(ingrendient: Ingredient): void {
-    try {
-      if (this._grids.flat().includes(ingrendient)) {
-        for (let i = 0; i < this._grids.length; i++) {
-          for (let j = 0; j < this._grids[i].length; j++) {
-            if (this._grids[i][j] === ingrendient) {
-              this._grids[i][j] = '_';
-              return;
-            }
+    if (this._grids.flat().includes(ingrendient)) {
+      for (let i = 0; i < this._grids.length; i++) {
+        for (let j = 0; j < this._grids[i].length; j++) {
+          if (this._grids[i][j] === ingrendient) {
+            this._grids[i][j] = '_';
+            return;
           }
         }
-      } else {
-        throw new Error('The ingredient is not on the stove.');
       }
-    } catch (error) {
-      // console.log('The ingredient is not on the stove.');
+    } else {
+      throw new Error('The ingredient is not on the stove.');
     }
   }
 
@@ -87,18 +78,29 @@ export default class Stove {
    * @param stove - An array of ingredients available in the stove.
    * @returns A Promise that resolves to void.
    */
-  async cookFood(stove: Ingredient[]): Promise<void> {
-    const recipe: Food[] = await readJsonFile('Food.JSON');
+  cookFood(): void {
+    const recipe: Food[] = readJsonFile('Food.JSON');
+
+    const gridIngredientName: string[] = [];
+    for (let i = 0; i < this._grids.length; i++) {
+      for (let j = 0; j < this._grids[i].length; j++) {
+        if (this._grids[i][j] !== '_') {
+          gridIngredientName.push((this._grids[i][j] as Ingredient).name);
+        }
+      }
+    }
+
+    // Compare the stove ingredients with the recipe to see any match
     const food: Food | undefined = recipe.find(r => {
-      const recipeIngredientsSet = new Set(r.ingredients.flat());
-      const stoveIngredientsSet = new Set(stove);
+      const recipeIngredientsSet = new Set(r.ingredients.flat().sort());
+      const stoveIngredientsSet = new Set(gridIngredientName.sort());
       return JSON.stringify([...recipeIngredientsSet]) === JSON.stringify([...stoveIngredientsSet]);
     });
 
     // Check if there are duplicated ingredients in the stove
     let counter = 0;
     const ingredientCounts = new Map<Ingredient, number>();
-    for (const ingredient of stove) {
+    for (const ingredient of this._grids as unknown as Ingredient[]) {
       const count = ingredientCounts.get(ingredient) || 0;
       ingredientCounts.set(ingredient, count + 1);
       if (count + 1 > 1) {
