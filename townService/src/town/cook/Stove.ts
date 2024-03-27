@@ -1,6 +1,6 @@
 import { Food } from './interface/IFood';
 import { Ingredient } from './interface/IIngredient';
-import readJsonFile from './readJSONFile';
+import readJsonFile from './ReadJSONFile';
 
 export default class Stove {
   private _grids: (Ingredient | '_')[][];
