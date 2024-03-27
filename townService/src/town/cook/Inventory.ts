@@ -1,5 +1,6 @@
 import { Ingredient } from './interface/IIngredient';
 
+
 // A users inventory of the ingredients they have available to cook with with a maximum of 6 ingredients
 
 export default class Inventory {

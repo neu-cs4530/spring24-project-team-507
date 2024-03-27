@@ -63,6 +63,7 @@ export type PlayerStatus = 'Speed x0.5' | 'Speed x1.5' | 'Speed x2' | 'Parrot' |
  * Base type for the state of a player
  */
 export interface PlayerState {
+  movementSpeed: number;
   status: PlayerStatus;
 } 
 export type KitchenAreaModel = Interactable;
