@@ -1,5 +1,5 @@
 import { PlayerState, PlayerStatus } from '../../types/CoveyTownSocket';
-import readJsonFile from './ReadJSONFile';
+import readJsonFile from './readJSONFile';
 import { Food } from './interface/IFood';
 import PlayerController from '../../../../frontend/src/classes/PlayerController'
 

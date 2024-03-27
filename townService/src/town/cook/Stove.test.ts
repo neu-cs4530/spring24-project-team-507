@@ -1,6 +1,6 @@
 import Stove from './Stove';
 import { Ingredient } from './interface/IIngredient';
-import readJsonFile from './ReadJSONFile';
+import readJsonFile from './readJSONFile';
 import { Food } from './interface/IFood';
 
 let stove = new Stove();
