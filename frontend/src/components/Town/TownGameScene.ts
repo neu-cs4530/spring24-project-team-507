@@ -402,8 +402,10 @@ export default class TownGameScene extends Phaser.Scene {
       }
     });
     assert(this.input.keyboard);
-    this._cursorKeys = this.input.keyboard.createCursorKeys();
-    this._cursors.push(this._cursorKeys);
+    if (lowerCaseState !== 'dizzy') {
+      this._cursorKeys = this.input.keyboard.createCursorKeys();
+      this._cursors.push(this._cursorKeys);
+    }
     this._cursors.push(
       this.input.keyboard.addKeys(
         {
@@ -437,7 +439,7 @@ export default class TownGameScene extends Phaser.Scene {
       .setDepth(6);
     const label = this.add
       .text(spawnPoint.x, spawnPoint.y - 20, '(You)', {
-        font: '18px monospace',
+        font: '16px monospace',
         color: '#000000',
         // padding: {x: 20, y: 10},
         backgroundColor: '#ffffff',

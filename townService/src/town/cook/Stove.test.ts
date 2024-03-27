@@ -8,7 +8,7 @@ let ingredient: Ingredient[] = [];
 ingredient = readJsonFile('Ingredients.JSON');
 let food: Food[] = [];
 food = readJsonFile('Food.JSON');
-const [tomato, egg, mushroom, meat, milk, rice, coffeeBean, noodle, soySauce] = ingredient;
+const [tomato, egg, mushroom, meat, milk, rice, coffeeBean, soySauce] = ingredient;
 const [
   coffee,
   latte,
