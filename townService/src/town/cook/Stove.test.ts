@@ -170,4 +170,51 @@ describe('recipeMatching', () => {
       ['_', '_'],
     ]);
   });
+  it('should throw an error if the stove is empty', () => {
+    expect(() => stove.cookFood()).toThrowError('The stove is empty.');
+  });
+});
+
+describe('checking duplicated ingreidents effect on extra time', () => {
+  beforeEach(() => {
+    stove = new Stove();
+  });
+  it('should have extra time 0 if the ingredients are not duplicated', () => {
+    stove.addIngredient(meat);
+    stove.addIngredient(rice);
+    stove.addIngredient(tomato);
+    stove.cookFood();
+    expect(stove.finalFood).toEqual(risotto);
+    expect(stove.extraTime).toEqual(0);
+  });
+  it('should have extra time 30 if the ingredients are 1 duplicated for risotto', () => {
+    stove.addIngredient(meat);
+    stove.addIngredient(meat);
+    stove.addIngredient(rice);
+    stove.addIngredient(tomato);
+    expect(stove.grids).toEqual([
+      [meat, meat],
+      [rice, tomato],
+    ]);
+    stove.cookFood();
+    expect(stove.finalFood).toEqual(risotto);
+    expect(stove.extraTime).toEqual(30);
+  });
+  it('should have extra time 60 if the ingredients are 2 duplicated for coffee', () => {
+    stove.addIngredient(coffeeBean);
+    stove.addIngredient(coffeeBean);
+    stove.addIngredient(coffeeBean);
+    stove.cookFood();
+    expect(stove.finalFood).toEqual(coffee);
+    expect(stove.extraTime).toEqual(60);
+  });
+  it('should have extra time 60 if the ingredients are 2 duplicated for latte', () => {
+    stove.addIngredient(coffeeBean);
+    stove.addIngredient(coffeeBean);
+    stove.addIngredient(coffeeBean);
+    stove.addIngredient(milk);
+    stove.cookFood();
+    expect(stove.finalFood).toEqual(latte);
+    expect(stove.extraTime).toEqual(60);
+  });
 });

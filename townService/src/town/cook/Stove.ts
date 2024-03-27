@@ -80,15 +80,18 @@ export default class Stove {
    */
   cookFood(): void {
     const recipe: Food[] = readJsonFile('Food.JSON');
-
     const gridIngredientName: string[] = [];
+    let empty = true;
     for (let i = 0; i < this._grids.length; i++) {
       for (let j = 0; j < this._grids[i].length; j++) {
         if (this._grids[i][j] !== '_') {
           gridIngredientName.push((this._grids[i][j] as Ingredient).name);
+          empty = false;
         }
       }
     }
+
+    if (empty) throw new Error('The stove is empty.');
 
     // Compare the stove ingredients with the recipe to see any match
     const food: Food | undefined = recipe.find(r => {
@@ -100,11 +103,14 @@ export default class Stove {
     // Check if there are duplicated ingredients in the stove
     let counter = 0;
     const ingredientCounts = new Map<Ingredient, number>();
-    for (const ingredient of this._grids as unknown as Ingredient[]) {
-      const count = ingredientCounts.get(ingredient) || 0;
-      ingredientCounts.set(ingredient, count + 1);
-      if (count + 1 > 1) {
-        counter++;
+    for (let i = 0; i < this._grids.length; i++) {
+      for (let j = 0; j < this._grids[i].length; j++) {
+        const ingredient = this._grids[i][j] as Ingredient;
+        const count = ingredientCounts.get(ingredient) || 0;
+        ingredientCounts.set(ingredient, count + 1);
+        if (count + 1 > 1) {
+          counter++;
+        }
       }
     }
 
